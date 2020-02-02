@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="style-form.css" />
+</head>
+
+<body>
+    <div class="master-div">
+        <div class="custom-header">
+            <div class="custom-underline">
+                <span class="custom-title">BUSCA MARVEL</span>
+                <span class="custom-subtitle">TESTE FRONT-END</span>
+                <span class="custom-signature">LUAN BODNER</span>
+            </div>
+        </div>
+
+        <div class="custom-input-size">
+            <label for="name">
+                <span class="custom-label-font">
+                    Nome do Personagem
+                </span>
+            </label>
+            <br>
+            <input id="search-input" type="text" onkeyup="filterByName()" class="custom-input">
+        </div>
+
+        <div class="custom-table-wrapper">
+            <table class="custom-table">
+                <thead>
+                    <th class="custom-head">Personagem</th>
+                    <th class="custom-head">Descrição</th>
+                </thead>
+                <tbody id="table-body">
+                </tbody>
+            </table>
+        </div>
+
+        <div id='buttons' class="custom-button-line">
+            <button id="arrow-left" class="custom-arrow-left"></button>
+            <button id="first-button" class="custom-button">
+                <span id="first-span" class="custom-button-font">
+                    1
+                </span>
+            </button>
+            <button id="second-button" class="custom-button">
+                <span id="second-span" class="custom-button-font">
+                    2
+                </span>
+            </button>
+            <button id="third-button" class="custom-button">
+                <span id="third-span" class="custom-button-font">
+                    3
+                </span>
+            </button>
+            <button id="arrow-right" class="custom-arrow-right"></button>
+        </div>
+
+        <custom-footer></custom-footer>
+    </div>
+
+    <div id="custom-pop" class="custom-modal">
+        <div class="custom-modal-content">
+            <span class="custom-close">&times;</span>
+            <div class="custom-header">
+                <div class="custom-underline">
+                    <span class="custom-title">COMICS</span>
+                    <span class="custom-subtitle">LIST</span>
+                    <span class="custom-signature">PERSONAGEM</span>
+                </div>
+            </div>
+
+            <div id='comics' class="custom-comic-line">
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<script type="text/javascript" src="utils.js"></script>
+
+</html>
