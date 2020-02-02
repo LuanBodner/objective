@@ -11,7 +11,7 @@
 * decidi utilizar a API da Marvel para pegar os personagens e as edições dos
 * quadrinhos no qual eles apareceram.
 *
-* Luan Bodner do Rosário 03/02/2020
+* Luan Bodner do Rosário 02/02/2020
 */
 let ts = ''
 let apikey = ''
