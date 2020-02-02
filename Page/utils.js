@@ -1,9 +1,21 @@
 /*
 * Página de busca de super heróis da marvel - Teste de front end
-* Luan Bodner do Rosário
+*
+* Minhas considerações:   
+* Tomei a liberdade de mudar a língua das labels listadas na documentação
+* para deixar a visualização da página mais coerente com o que a API utilizada
+* retorna pra mim.
+*
+* A rota citada na especificação não foi utilizada devido a escacez de dados
+* de personagens da Marvel a partir dos filtros pelos quais minerei. Portanto,
+* decidi utilizar a API da Marvel para pegar os personagens e as edições dos
+* quadrinhos no qual eles apareceram.
+*
+* Luan Bodner do Rosário 03/02/2020
 */
 let ts = ''
 let apikey = ''
+let secret = ''
 let hash = ''
 
 window.onload = initialize()
@@ -16,9 +28,10 @@ var list = []
 */
 function initialize() {
     // API Keys disponibilizadas em https://developer.marvel.com/
-    ts = '2252'
-    apikey = '8716d55e5f2a7e55fa1cbac2844da65b'
-    hash = '1323104678c6c56c59d001e561561c74'
+    ts = '3000'
+    apikey = 'eef6dd27c84eccc603feed5d673a2111'
+    secret = 'a7a188dbc0daed1fe169fa685e28be2ec18ac266'
+    hash = 'cfd07329555ccbcc8399c02541cfc33b'
 
     starter()
 }
@@ -66,6 +79,8 @@ async function starter() {
 * Chama a API e transforma em json com base no OFFSET (pagina 0,1 e 2)
 */
 async function executeQuery(offset) {
+
+
     const response = await fetch('https://gateway.marvel.com:443/v1/public/' +
         'characters?ts=' + ts + '&apikey=' + apikey + '&hash=' + hash
         + '&orderBy=modified&limit=100&offset=' + (100 * offset));
@@ -92,8 +107,8 @@ async function executeQuerySearch(offset, name) {
 */
 async function getListOfMedias(id) {
     const response = await fetch('https://gateway.marvel.com:443/v1/public/characters/'
-        + id + '/comics?ts=2252&apikey=8716d55e5f2a7e55fa1cbac2844da65b'
-        + '&hash=1323104678c6c56c59d001e561561c74&limit=5');
+        + id + '/comics?ts=' + ts + '&apikey=' + apikey
+        + '&hash=' + hash + '&limit=5');
     const jsonBody = await response.json()
     results = jsonBody.data.results
     return results
@@ -298,8 +313,8 @@ async function openModal(object) {
         if (counter == 10000) {
             comic = '<div class="custom-comic-issue-error">'
                 + '<span class="custom-subtitle">'
-                + 'Oops, parece que não exitem '
-                + 'registros para este personagem!'
+                + 'Oops, seems like there are no '
+                + 'additional information available for this character!'
                 + '</span>' + '</div > '
             break
         }
